@@ -1,0 +1,56 @@
+name: source_of_sales_change_lcarr
+
+config-version: 2
+version: 0.0.1
+
+profile: basic
+
+models: 
+  + bind: false 
+  source_of_sales_change_lcarr: 
+    set_up: 
+      stage_transaction: 
+        +materialized: view
+      details_transaction: 
+        +materialized: table
+    ast: 
+      aggregations: 
+        +materialized: table 
+      aggregations_distinct: 
+        +materialized: table
+      final_output: 
+        +materialized: table 
+    market: 
+      aggregations: 
+        +materialized: table 
+      aggregations_distinct: 
+        +materialized: table
+      final_output: 
+        +materialized: table 
+    national: 
+      aggregations: 
+        +materialized: table 
+      aggregations_distinct: 
+        +materialized: table
+      final_output: 
+        +materialized: table 
+    region: 
+      aggregations: 
+        +materialized: table 
+      aggregations_distinct: 
+        +materialized: table
+      final_output: 
+        +materialized: table 
+
+
+vars: 
+  prefix: lcarr_sosx
+  first_date_same_store: '01-01-2021'
+  monthend_date_1: '2021-02-28'
+  monthend_date_2: '2022-02-28'
+  date_1_start: '2022-02-01'
+  date_1_end: '2022-02-28'
+  date_2_start: '2021-02-01'
+  date_2_end: '2021-02-28'
+  locations: ''
+  # locations: ('01856', '80170', '04332', '00031','03187')

@@ -1,0 +1,46 @@
+version: 2 
+
+sources: 
+  - name: pos 
+    schema: pos 
+    tables: 
+      - name: trans_header 
+      - name: trans_tender
+      - name: trans_item 
+      - name: transaction_status 
+  - name: public 
+    schema: public 
+    tables: 
+      - name: location_attributes 
+      - name: dim_date
+  - name: common
+    schema: common
+    tables:
+      - name: d_destination
+  - name: apps
+    schema: apps
+    tables:
+      - name: dim_item
+      - name: time_d
+  - name: fin_lh
+    schema: fin_lh
+    tables:
+      - name: fcr_locations_sales_eligibility
+  - name: prodmix_dl
+    schema: prodmix_dl
+    tables:
+      - name: fcs_adjusted_sales
+
+models:
+  - name: trans_detail
+    columns:
+      - name: trans_id
+        tests:
+          - unique
+          - not_null
+  - name: item
+    columns:
+      - name: trans_id
+        tests:
+          - unique
+          - not_null
